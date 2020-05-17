@@ -23,6 +23,7 @@ This is the entry point of the program. The input data are time-lapse microscopy
 
 ### How to Run
 Users need to run the code in Ubuntu Envirenment. After prepare the input data, just execute the following command:
+
 $./main.py
 
 ## Phagocytosis Detection
@@ -38,6 +39,7 @@ This is the entry point of the program. The input data is one video made up of t
 
 ### How to Run
 Users need to run the code in Ubuntu Envirenment. After prepare the input data, just execute the following command:
+
 $./main.py
 
 
