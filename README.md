@@ -1,5 +1,5 @@
 # CellTrack
-This project is the implement of the algorithm proposed in manuscript "An Advanced Framework for Time-lapse Microscopy Image Analysis". It contains two tasks to process time-lapse microscopy images. The first part is to classify cancer cells into live and dead categories. The second part is to detect phagocytoses in these images.
+The algorithm proposed in manuscript "An Advanced Framework for Time-lapse Microscopy Image Analysis" can detect, track, and classify  cancer cells as well as detect phagocytosis in time-lapse Microscopy images. 
 
 ## Required Python packages
 - Numpy
@@ -12,17 +12,17 @@ This project is the implement of the algorithm proposed in manuscript "An Advanc
 - multiprocessing
 
 ## Cell Classification
-The files in folder cell_classification are the codes to classify cancer cells into live and dead categories.
+The files in folder cell_classification are the codes required to classify cancer cells into live and dead.
 
 ### **cell_detect.py**
-This file implements how to detect cells in the images. It contains several steps, converting color images to gray images, converting gray images to binary images, finding contours in binary images, determining which kinds of objects are cells, calculating the shape of cells.
+This file implements detection of cells in the images. It contains several steps such as converting color images to gray scale images and gray scale images to binary images, finding contours in binary images, determining if a contour is actually a cell, and calculating the shape of the cells.
 ### **cell_classify.py**
-This file implements how to classify cells in the images. It contains several steps, tracking cells through contiuous images, determining which are live or dead cells seperatly.
+This code classifies cells in the images. It contains several steps such as tracking cells through contiuous images, determining which cells are live and which are dead.
 ### **main.py**
-This is the entry point of the program. The input data are time-lapse microscopy images. The output data is a video in which the cells are marked live or dead.
+This code takes time-lapse microscopy images as input data and give the user the classfication of cells as output. It calls cell_detect.py and cell_classify.py for the computation. 
 
 ### How to Run
-Users need to run the code in Ubuntu Envirenment. After prepare the input data, just execute the following command:
+Users need to run the code in Ubuntu Envirenment. After preparing the input data, execute the following command:
 
 $./main.py
 
@@ -30,15 +30,15 @@ $./main.py
 The files in folder phagocytosis_detection are the codes to detect phagocytosis in the images. 
 
 ### **cell_detect.py**
-This file implements how to detect cells in the images. It contains several steps, converting color images to gray images, converting gray images to binary images, finding contours in binary images, determining which kinds of objects are cells, calculating the shape of cells.
+This file implements detection of cells in the images. It contains several steps such as converting color images to gray scale images and gray scale images to binary images, finding contours in binary images, determining if a contour is actually a cell, and calculating the shape of the cells.
 ### **phagocytosis_detect.py**
-This file implements how to detect phagocytosis in the continuous images. It contains the applies of DBSCAN, linear regression and how to determine if a cluster contains phagocytosis.
+This code detects phagocytosis in continuous images. It contains the application of DBSCAN, linear regression and determination if a cluster contains phagocytosis.
 
 ### **main.py**
-This is the entry point of the program. The input data is one video made up of time-lapse microscopy images. The output data is a video in which cells are clustered and clusters are marked if it contains phagocytosis.
+This code takes time-lapse microscopy images as input data and give the user a video in which cells are clustered and clusters are marked if it contains phagocytosis as output. It calls cell_detect.py and phagocytosis_detect.py for the computation. 
 
 ### How to Run
-Users need to run the code in Ubuntu Envirenment. After prepare the input data, just execute the following command:
+Users need to run the code in Ubuntu Envirenment. After preparing the input data, execute the following command:
 
 $./main.py
 
