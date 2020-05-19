@@ -24,27 +24,8 @@ debug = 0
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 
 def main():
-
-    processes = []
-
-    for Gaussian_Standard_deviation in [0.5]:#, 0.6, 0.7, 0
-
-        # # sim
-        path = "./" + str(Gaussian_Standard_deviation) + "/"
-        
-        # process_one_video_main(path)
-        try:
-            p = multiprocessing.Process(target=process_one_video_main, args=(path, )) 
-            p.start()
-            processes.append(p)
-
-        except Exception as e: # work on python 3.x
-            print('Exception: '+ str(e))
-
-    print(len(processes), " processes are running.")
-    for p in processes:
-        p.join()
-    print("All processes ended.")
+    path = "./"
+    process_one_video_main(path)
 
 def process_one_video_main(path):
 

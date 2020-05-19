@@ -262,43 +262,43 @@ class CellClassifier(object):
             file.write("\n")
         file.close()
 
-        cell_info = np.load("./0/cells_info.npy")
-        live_dead_table = np.zeros((image_count, 4), dtype=int)
-
-
-        for i in range(0, len(self.alive_mat), 1):
-            for j in range(0, image_count):
-                cell_x = self.coordinate_matrix[i][2 * j + 0]
-                cell_y = self.coordinate_matrix[i][2 * j + 1]
-
-
-                if(cell_x > 0 and cell_y > 0):
-
-                    if(self.alive_mat[i][j] == 1):
-                        live_dead_table[j][0] = live_dead_table[j][0] + 1
-                    elif(self.alive_mat[i][j] == -1):
-                        live_dead_table[j][1] = live_dead_table[j][1] + 1
-                    else:
-                        pass
-
-                    k = 0
-                    for k in range(len(cell_info)):
-                        if(np.abs(cell_x - cell_info[k][j * 3 + 0]/8) < 10 and np.abs(cell_y - cell_info[k][j * 3 + 1]/8) < 10):
-                            # print("true_0")
-                            if(self.alive_mat[i][j] == cell_info[k][j * 3 + 2]):
-
-                                if(self.alive_mat[i][j] == 1):
-                                    live_dead_table[j][2] = live_dead_table[j][2] + 1
-                                elif(self.alive_mat[i][j] == -1):
-                                    live_dead_table[j][3] = live_dead_table[j][3] + 1
-                                else:
-                                    pass
-                                break
-
-        if(not os.path.exists(outpath)):
-            os.makedirs(outpath)
-
-        np.savetxt(outpath + 'live_dead_table.txt', live_dead_table, fmt='%d')
+        # cell_info = np.load("./0/cells_info.npy")
+        # live_dead_table = np.zeros((image_count, 4), dtype=int)
+        #
+        #
+        # for i in range(0, len(self.alive_mat), 1):
+        #     for j in range(0, image_count):
+        #         cell_x = self.coordinate_matrix[i][2 * j + 0]
+        #         cell_y = self.coordinate_matrix[i][2 * j + 1]
+        #
+        #
+        #         if(cell_x > 0 and cell_y > 0):
+        #
+        #             if(self.alive_mat[i][j] == 1):
+        #                 live_dead_table[j][0] = live_dead_table[j][0] + 1
+        #             elif(self.alive_mat[i][j] == -1):
+        #                 live_dead_table[j][1] = live_dead_table[j][1] + 1
+        #             else:
+        #                 pass
+        #
+        #             k = 0
+        #             for k in range(len(cell_info)):
+        #                 if(np.abs(cell_x - cell_info[k][j * 3 + 0]/8) < 10 and np.abs(cell_y - cell_info[k][j * 3 + 1]/8) < 10):
+        #                     # print("true_0")
+        #                     if(self.alive_mat[i][j] == cell_info[k][j * 3 + 2]):
+        #
+        #                         if(self.alive_mat[i][j] == 1):
+        #                             live_dead_table[j][2] = live_dead_table[j][2] + 1
+        #                         elif(self.alive_mat[i][j] == -1):
+        #                             live_dead_table[j][3] = live_dead_table[j][3] + 1
+        #                         else:
+        #                             pass
+        #                         break
+        #
+        # if(not os.path.exists(outpath)):
+        #     os.makedirs(outpath)
+        #
+        # np.savetxt(outpath + 'live_dead_table.txt', live_dead_table, fmt='%d')
 
     def mark_cells(self, frame, frame_index, sheet, beacon_count, image_dir):
 
